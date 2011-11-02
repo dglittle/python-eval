@@ -1,0 +1,14 @@
+application: python-eval
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+
+- url: /api/.*
+  script: api.py
+
+- url: /.*
+  script: main.py
+

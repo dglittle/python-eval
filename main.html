@@ -1,0 +1,43 @@
+<html>
+<head> 
+<title>python eval</title>
+<link rel="StyleSheet" href="https://raw.github.com/dglittle/myutil/master/myutil.css" type="text/css">
+<style>
+
+</style> 
+</head> 
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://raw.github.com/dglittle/myutil/master/myutil.js"></script>
+<script src="https://raw.github.com/dglittle/myutil/master/json2.js"></script>
+<script src="https://raw.github.com/dglittle/myutil/master/tab.js"></script>
+<script>
+
+$(function () {
+    $('body').ajaxError(function (_, s) {
+        var err = s.responseText
+        $('#output').val(err)
+    })
+    
+    go = function() {
+        $.post('/api/eval', { code : $('#input').val() }, function (s) {
+            $('#output').val(s)
+        })
+    }
+})
+
+</script>
+
+<table style="width:100%;height:100%">
+    <tr>
+        <td style="width:50%"><textarea id="input" style="width:100%;height:100%">output("hi!")</textarea></td>
+        <td valign="top">
+            <button onclick="go()">&gt;</button><br>
+        </td>
+        <td style="width:50%;height:100%"><textarea id="output" style="width:100%;height:100%"></textarea></td>
+    </tr>
+</table>
+
+</body>
+</html>
+
